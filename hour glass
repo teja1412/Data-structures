@@ -1,0 +1,25 @@
+#include<stdio.h>
+int main()
+{
+    int a[100][100],i,j,t,trick=-63;
+    for(i=0;i<6;i++)
+    {
+        for(j=0;j<6;j++)
+        {
+            scanf("%d",&a[i][j]);
+        }
+    }
+
+ for(i=0;i<=3;i++)
+ {
+     for(j=0;j<=3;j++)
+     {
+         t=a[i][j]+a[i][j+1]+a[i][j+2]+a[i+1][j+1]+a[i+2][j]+a[i+2][j+1]+a[i+2][j+2];
+         if(trick<t)
+         {
+            trick=t ;
+         } 
+     }
+ }
+ printf("%d",trick);
+}
