@@ -1,0 +1,14 @@
+SinglyLinkedListNode* insertNodeAtHead(SinglyLinkedListNode* llist, int data) {
+    SinglyLinkedListNode* newn;
+    if(llist==NULL)
+    {
+        newn=create_singly_linked_list_node(data);
+        llist=newn;
+    }
+    else {
+    newn=create_singly_linked_list_node(data);
+    newn->next=llist;
+    llist=newn;
+    }
+    return llist;
+}
