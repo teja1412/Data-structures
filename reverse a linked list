@@ -1,0 +1,36 @@
+SinglyLinkedListNode* reverse(SinglyLinkedListNode* llist){
+    SinglyLinkedListNode* curr;
+    SinglyLinkedListNode* prev;
+    prev=llist;
+    curr=llist;
+    int listLength(SinglyLinkedListNode* start)
+    {
+      int count=0;
+      while(start!=NULL)
+    {
+        count++;
+        start=start->next;
+    }
+    return count;
+    }
+    int p=listLength(curr);
+    curr=llist;
+    int i=0,j=p-1,l;
+    while(i<j){
+        int k=0;
+        while(k<j)
+        {
+            curr=curr->next;
+            k++;
+        }
+        int temp;
+        temp=prev->data;
+        prev->data=curr->data;
+        curr->data=temp;
+        i++;
+        j--;
+        prev=prev->next;
+        curr=llist;
+    }
+    return llist;
+}
