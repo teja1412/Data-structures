@@ -1,0 +1,106 @@
+
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node* next;
+};
+
+//creating node
+struct node* create_node()
+{
+    int v;
+    printf("enter the value of the node");
+    scanf("%d",&v);
+    struct node* temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    temp->data=v;
+    temp->next=NULL;
+    return temp;
+}
+//creating a list 
+struct node* create_list(int n)
+{
+    int i;
+    struct node* head=NULL;
+    struct node* newn;
+    struct node*last;
+    for(i=0;i<n;i++)
+    {
+        newn=create_node();
+        if(i==0)
+        {
+            head=newn;
+        }
+        else
+        {
+            last->next=newn;
+        }
+        last=newn;
+        last->next=head;
+    }
+    return head;
+}
+//inserting a node
+struct node* insert(struct node* test1,int pos)
+{
+    struct node* newn1=create_node();
+    struct node* start1=test1;
+    int i;
+    if(start1==NULL)
+    {
+        return newn1;
+    }
+    if(pos==1)
+    {
+        if(start1==test1)
+        {
+            start1=start1->next;
+        }
+        while(start1->next!=test1)
+        {
+            start1=start1->next;
+        }
+        start1->next=newn1;
+        newn1->next=test1;
+        return test1;
+    }
+    start1=test1;
+    for(i=1;i<pos-1;i++)
+    {
+        start1=start1->next;
+    }
+    newn1->next=start1->next;
+    start1->next=newn1;
+    return test1;
+}
+
+//printing  a list
+void printlist(struct node* start,struct node* test)
+{
+    if(start==test)
+    {
+        printf("%d\t",start->data);
+        start=start->next;
+    }
+    while(start!=test)
+    {
+        printf("%d\t",start->data);
+        start=start->next;
+    }
+}
+int main()
+{
+    struct node* t;
+    struct node* e;
+    int p,po;
+    printf("enter the length of the list");
+    scanf("%d",&p);
+    t=create_list(p);
+    printf("eneter the position to be inserted");
+    scanf("%d",&po);
+    e=insert(t,po);
+    struct node* q=e;
+    printlist(q,e);
+}
